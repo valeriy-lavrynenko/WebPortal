@@ -1,0 +1,20 @@
+{
+	
+	"title" : "Sample article",
+	"content" : "This is sample article...",
+	"group" : {
+		"idGroup" : 2
+	},
+	"owner" : {
+		"idUser" : 1
+	},
+	"state" : {
+		"idState" : 1
+	},
+	"tags" : [{
+			"tag" : "sampleNEW"
+		}, {
+			"tag" : "sample"
+		}
+	]
+}

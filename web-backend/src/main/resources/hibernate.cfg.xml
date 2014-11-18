@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://192.168.137.3:3306/test</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">asat</property>
+        <property name="connection.password">***REMOVED***</property>
+        <property name="connection.pool_size">
+            1
+        </property>
+        <property name="dialect">
+            org.hibernate.dialect.MySQL5Dialect
+        </property>
+        <property name="current_session_context_class">
+            thread
+        </property>
+        <property name="cache.provider_class">
+            org.hibernate.cache.internal.NoCachingRegionFactory
+        </property>
+        <property name="show_sql">
+            true
+        </property>
+        <!--<property name="format_sql">true</property>-->
+
+        <mapping class="epam.lavrynev.dbmodel.db.ArticleStateEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.ArticlesEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.CommentsEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.CommentsStateEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.GroupEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.StateEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.UsersEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.TagsEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.TagsStateEntity"/>
+        <mapping class="epam.lavrynev.dbmodel.db.SearchStatisticEntity"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

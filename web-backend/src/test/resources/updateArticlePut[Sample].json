@@ -1,0 +1,13 @@
+{
+	"title" : "Sample article",
+	"content" : "This is sample article...",
+	"state" : {
+		"idState" : 1
+	},
+	"tags" : [{
+			"tag" : "sampleNEW"
+		}, {
+			"tag" : "sample"
+		}
+	]
+}

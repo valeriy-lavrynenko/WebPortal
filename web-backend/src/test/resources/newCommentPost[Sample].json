@@ -1,0 +1,11 @@
+{
+		"content" : "Sample comment123",
+		"article" : 1,
+		"parent" : {
+			"idComment" : 1
+		},
+		"owner" : {
+			"idUser" : 1
+		}
+}
+
