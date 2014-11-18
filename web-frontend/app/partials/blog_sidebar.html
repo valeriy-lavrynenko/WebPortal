@@ -1,0 +1,62 @@
+<div class="span4">
+    <div class="sidebar" ng-controller="SideBarCtrl">
+        <div class="widget" ng-controller="SearchCtrl" ng-hide="searchForm.enabled">
+            <form class="form-search">
+                <input type="text" class="input-medium search-query" ng-model="searchForm.value">
+                <button type="submit" class="contact_btn" ng-click="search(true)" ><i class="icon-search"></i> Search</button>
+            </form>
+        </div>
+        <div class="widget">
+            <ul class="nav nav-list">
+                <li class="nav-header my-class-font">
+                    Categories
+                </li>
+                <li class="active">
+                    <a href="#"><i class="icon-folder-open"></i>Category1</a>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-folder-close"></i>Category2</a>
+                </li>
+                <li >
+                    <a href="#"><i class="icon-folder-close"></i>Category3</a>
+                </li>
+                <li class="nav-header my-class-font">
+                    Management
+                </li>
+                <li >
+                    <a href="#/blog/edit/new"><i class="icon-pencil"></i>Upload post</a>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="widget" ng-controller="CommentsCtrl" ng-init="getCommentsNew()">
+            <h2 class="title"><span>last comments</span></h2>
+            <ul class="recent_post" >
+                <li ng-repeat="comment in commentsNew">
+                    <a href="#"><img src="images/img8.jpg" alt="" /></a>
+                    <div><a href="#">{{comment.content}}</a></div>
+                    {{comment.created | date : 'dd MMM yyyy, HH:mm'}}
+                    <div class="clear"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="widget tags" ng-controller="TagsCtrl">
+            <h2 class="title"><span>tags</span></h2>
+            <a class="my-class" ng-repeat="tag in tags" ng-click="searchByTag(tag.name)">{{tag.name}}</a>
+        </div>
+        <div class="widget">
+            <h2 class="title"><span>links</span></h2>
+            <ul class="links">
+                <li><a href="javascript:void(0);">Lorem ipsum dolor sit amet, consectetur</a></li>
+                <li><a href="javascript:void(0);">Adipisicing elit, sed do eiusmod tempor incididunt</a></li>
+                <li><a href="javascript:void(0);">Ut labore et dolore magna aliqua.</a></li>
+                <li><a href="javascript:void(0);">Ut enim ad minim veniam, quis nostrud exercitation ullamco</a></li>
+                <li><a href="javascript:void(0);">Laboris nisi ut aliquip ex ea commodo consequat.</a></li>
+                <li><a href="javascript:void(0);">Duis aute irure dolor in reprehenderit</a></li>
+                <li><a href="javascript:void(0);">In voluptate velit esse cillum</a></li>
+                <li><a href="javascript:void(0);">Excepteur sint occaecat cupidatat non proident</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

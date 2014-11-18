@@ -1,0 +1,85 @@
+<div class="wrap">
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="#/blog">Blog</a><span>/</span>{{articleState.article.title}}
+        </div>
+    </div>
+    <div class="container">
+        <section>
+            <div class="row pad5">
+                <div class="span8">
+                    <div class="post">
+                        <img src="images/blog/1.jpg" alt="" />
+                        <div class="post_info">
+                            <div class="fleft">On <span>{{articleState.article.created | date : 'dd MMM yyyy, HH:mm'}}</span> / By <a href="#">{{articleState.article.owner.name}}</a> / Tags
+                                <span ng-repeat="tag1 in articleState.article.tags">
+                                    <a href="#" id-tag="{{tag1.idTag}}">{{tag1.tag}}</a>
+                                    <span ng-if="!$last">,</span>
+                                </span>
+                            </div>
+                            <!--<div class="fright"><a href="#">25</a> Comments</div>-->
+                            <div class="clear"></div>
+                        </div>
+                       {{articleState.article.content}}
+                    </div>
+
+                    <!-- Comments -->
+                    <div ng-controller="CommentsCtrl">
+                        <h4>{{articleState.article.comments.count | nullable}} comments</h4>
+                        <div id="comments" ng-if="articleState.article.comments.count" ng-init="getComments()">
+                            <ol>
+                               <li ng-repeat="comment in articleState.comments">
+                                    <div class="avatar"><a href="#"><img src="images/avatar1.jpg" width="68" height="68" alt="" /></a></div>
+                                    <div class="comment_right">
+                                        <div class="comment_info">
+                                            Posted by <a href="#">{{comment.owner.name}}</a> <span>|</span> {{comment.created | date : 'dd MMM yyyy, HH:mm'}} <span>|</span> <a class="my-class" ng-click="reply=!reply">Reply</a>
+                                        </div>
+                                        {{comment.content}}
+                                    </div>
+                                    <div class="clear"></div>
+
+                                   <br />
+                                   <form class="comment_form" ng-if="reply" ng-init="replyComment = getNewComment(); replyComment.parent.idComment = comment.idComment">
+                                       <div class="avatar"><img src="images/avatar2.jpg" width="68" height="68" alt="" /></div>
+                                       <textarea ng-model="replyComment.content" name="message" class="span7 my-class" onFocus="if (this.value == 'Message...') this.value = '';" onBlur="if (this.value == '') this.value = 'Message...';" >Message...</textarea>
+                                       <div class="clear"></div>
+                                       <button ng-click="uploadComment(replyComment)" class="contact_btn">Post Comment</button>
+                                       <div class="clear"></div>
+                                   </form>
+
+                                    <ul ng-if="comment.childComment.length>0">
+                                        <li ng-repeat="childComment in comment.childComment">
+                                            <div class="avatar"><a href="#"><img src="images/avatar2.jpg" width="68" height="68" alt="" /></a></div>
+                                            <div class="comment_right">
+                                                <div class="comment_right">
+                                                    <div class="comment_info">
+                                                        Posted by <a href="#">{{childComment.owner.name}}</a> <span>|</span> {{childComment.created | date : 'dd MMM yyyy, HH:mm'}} <span>|</span> <a href="#">Reply</a>
+                                                    </div>
+                                                    {{childComment.content}}
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                               </li>
+                            </ol>
+                        </div>
+                        <!-- //Comments -->
+
+                        <!-- Leave a Comment -->
+                        <h4>Leave a comment</h4>
+                        <form class="comment_form" ng-init="newComment = getNewComment()">
+                            <div class="avatar"><img src="images/avatar2.jpg" width="68" height="68" alt="" /></div>
+                            <textarea ng-model="newComment.content" name="message" class="span7 my-class" onFocus="if (this.value == 'Message...') this.value = '';" onBlur="if (this.value == '') this.value = 'Message...';" >Message...</textarea>
+                            <div class="clear"></div>
+                            <button ng-click="uploadComment(newComment)" class="contact_btn">Post Comment</button>
+                            <div class="clear"></div>
+                        </form>
+                        <!-- //Leave a Comment -->
+                    </div>
+                </div>
+                <ng-include src="'partials/blog_sidebar.html'"></ng-include>
+            </div>
+        </section>
+    </div>
+</div>

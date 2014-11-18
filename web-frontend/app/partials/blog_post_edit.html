@@ -1,0 +1,57 @@
+<div class="wrap">
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="#/blog">Blog</a><span>/</span>{{articleState.article.title}}
+        </div>
+    </div>
+    <div class="container">
+        <section>
+            <div class="row pad5">
+                <div class="span8">
+                    <form name="articleEdit" class="form-vertical">
+                        <fieldset>
+                            <legend>Upload article</legend>
+                            <div class="alert alert-error" ng-if="error.enabled">
+                                <a class="close" ng-click="error.enabled=false">×</a>
+                                <h4 class="alert-heading">Warning!</h4>
+                                {{error.message}}
+                            </div>
+                            <div class="control-group" ng-class="{warning: articleEdit.inputTitle.$error.required}">
+                                <label class="control-label" for="inputTitle">Title</label>
+                                <div class="controls">
+                                    <input ng-model="articleState.article.title" type="text" class="input-xxxlarge" id="inputTitle" name="inputTitle" required/>
+                                    <span class="help-inline" ng-show="articleEdit.inputTitle.$error.required"><span class="label label-warning">Warning</span> This field is required!</span>
+                                </div>
+                            </div>
+                            <div class="control-group" ng-class="{error: articleEdit.inputTags.$error.pattern||articleEdit.inputTags.$error.required}">
+                                <label class="control-label" for="inputTags">Tags</label>
+                                <div class="controls">
+                                    <input ng-model="articleState.article.tags" type="text" class="input-xxxlarge" name="inputTags" id="inputTags" ng-pattern="/^(\w+?,\s)*\w+$/" required/>
+                                    <span class="help-inline" ng-show="articleEdit.inputTags.$error.pattern"><span class="label label-important">Important</span> Not valid tags list!</span>
+                                    <span class="help-inline" ng-show="articleEdit.inputTags.$error.required"><span class="label label-warning">Warning</span> This field is required!</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputFile">Image</label>
+                                <div class="controls">
+                                    <input type="file" class="input-file" id="inputFile" name="inputFile" />
+                                </div>
+                            </div>
+                            <div class="control-group" ng-class="{warning: articleEdit.textContent.$error.required}">
+                                <label class="control-label" for="textContent">Content</label>
+                                <div class="controls">
+                                    <textarea ng-model="articleState.article.content"  class="input-xxxlarge" id="textContent" name="textContent" rows = "10" required></textarea>
+                                    <span class="help-inline" ng-show="articleEdit.textContent.$error.required"><span class="label label-warning">Warning</span> This field is required!</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button ng-click="updateArticle()" class="contact_btn">Save</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <ng-include src="'partials/blog_sidebar.html'"></ng-include>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+    <link rel="stylesheet" href="css/app.css"/>
+
+    <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+    <div class="container box_shadow">
+        <div class="container">
+            <div class="top_line">
+                <p class="fleft">My angularjs first app</p>
+                <div class="fright follow_us">
+                    <ul>
+                        <li><a  class="twitter">Twitter</a></li>
+                        <li><a  class="rss">Rss</a></li>
+                        <li><a  class="tumblr">Tumblr</a></li>
+                        <li><a  class="posterous">Posterous</a></li>
+                        <li><a  class="google_plus">Google Plus</a></li>
+                        <li><a  class="facebook">Facebook</a></li>
+                        <li><a  class="flickr">Flickr</a></li>
+                        <li><a  class="vimeo">Vimeo</a></li>
+                        <li><a  class="dribbble">Dribbble</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--header-->
+        <div class="header">
+            <div class="wrap">
+                <div class="navbar navbar_ clearfix">
+                    <div class="container">
+                        <div class="fleft logo">
+                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="fright top_info">
+                            <div class="phone_block">+1 234 748 9794</div>
+                            <div class="table_block">
+                                <div class="work_day">
+                                    <p class="day">Monday - Friday:</p>
+                                    <p class="day_inf">10 - 8</p>
+                                </div>
+                                <div class="free_day">
+                                    <p class="day">Saturday & Sunday:</p>
+                                    <p class="day_inf">appt only</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="container menu_bg">
+                        <nav id="main_menu">
+                            <div class="menu_wrap">
+                                <ul class="nav sf-menu LavaLamp">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li class="sub-menu current"><a href="javascript:{}">Blog</a>
+                                        <ul>
+                                            <li class="current"><a href="partials/blog.html"><span>-</span>Blog with right sidebar</a></li>
+                                            <li><a href="partials/blog_post.html"><span>-</span>Blog post</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="last"><a href="contacts.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//header-->
+
+        <!--page_container-->
+        <div ng-view class="page_container"></div>
+        <!--//page_container-->
+
+        <!--footer-->
+        <div id="footer">
+            <div class="wrap">
+                <div>
+                    <div class="row">
+                        <div class="span4 foot_logo_block">
+                            <p>Some footer text.</p>
+                        </div>
+                        <div class="span3" ng-controller="SearchCtrl" ng-init="getSearchStatistic()">
+                            <h2 class="title">Popaular Searches</h2>
+                            <div class="tags">
+                                <a ng-repeat="searchStat in searchStatistic" ng-click="searchForm.value = searchStat.search;search(true)">{{searchStat.search}}</a>
+
+                            </div>
+                        </div>
+                        <div class="span5">
+                            <h2 class="title">Get in touch!</h2>
+                            <form action="#" method="post">
+                                <input type="text" name="name" id="name" value="Name" onFocus="if (this.value == 'Name') this.value = '';" onBlur="if (this.value == '') this.value = 'Name';" />
+                                <input type="text" name="email" id="email" value="Email" onFocus="if (this.value == 'Email') this.value = '';" onBlur="if (this.value == '') this.value = 'Email';" />
+                                <textarea name="message" id="message" onFocus="if (this.value == 'Message') this.value = '';" onBlur="if (this.value == '') this.value = 'Message';" >Message</textarea>
+                                <div class="clear"></div>
+                                <input type="submit" class="contact_btn" value="Send" />
+                                <div class="clear"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_bottom">
+                <div class="wrap">
+                    <div class="container">
+                        <div class="fleft copyright">My angularjs app &copy; 2020  |  <a href="javascript:void(0);">Privacy Policy</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//footer-->
+
+    </div>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>

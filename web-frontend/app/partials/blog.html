@@ -1,0 +1,54 @@
+<div class="wrap">
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="#/blog">Blog</a> <span></span>
+        </div>
+    </div>
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="span8">
+                    <div class="post" ng-controller="SearchCtrl" ng-show="searchForm.enabled">
+                        <h2 class="title"><span>search</span><a class="close" ng-click="search(false)">&times;</a></h2>
+                        <form class="form-search">
+                            <input type="text" class="input-xxlarge search-query" ng-model="searchForm.value" />
+                            <button type="submit" class="contact_btn" ng-click="search(true)">Search</button>
+                            <label class="checkbox">Search in: </label>
+                            <label class="checkbox"><input type="checkbox" ng-model="searchForm.byTitle"/>Title</label>
+                            <label class="checkbox"><input type="checkbox" ng-model="searchForm.byContent"/>Content</label>
+
+                        </form>
+                    </div>
+                    <div class="post" ng-repeat="articleState in articleState.articles">
+                        <h2 class="title"><span><a href="#/blog/{{articleState.idArticle}}">{{articleState.title}}</a></span></h2>
+                        <img src="images/blog/1.jpg" alt="" />
+                        <div class="post_info">
+                            <div class="fleft"><i class="icon-time"></i> <span>{{articleState.created | date : 'dd MMM yyyy, HH:mm'}}</span> | <i class="icon-user"></i> <a href="#">{{articleState.owner.name}}</a> | <i class="icon-tags"></i>
+                                <span ng-repeat="tag1 in articleState.tags" ng-controller="TagsCtrl">
+                                    <a class="my-class" id-tag="{{tag1.idTag}}" ng-click="searchByTag(tag1.tag)">{{tag1.tag}}</a>
+                                    <span ng-if="!$last">,</span>
+                                </span>
+                            </div>
+                            <div class="fright"><a href="#">{{articleState.comments.count | nullable}}</a> <i class="icon-comment"></i></div>
+                            <div class="clear"></div>
+                        </div>
+                        <p>{{articleState.content}}</p>
+                        <a href="#/blog/{{articleState.idArticle}}" class="arrow_link">Read more</a> |
+                        <a href="#/blog/edit/{{articleState.idArticle}}" class="arrow_link">Edit</a>
+                    </div>
+                    <div class="pagination">
+                        <ul>
+                          <!--<li><span class="my-class">&larr;</span></li>-->
+                          <li ng-repeat="num in articleState.countList" ng-class="{active: num.view == articleState.currentPage}">
+                              <span class="my-class" ng-click="updateArticles(num.from)">{{num.view}}</span>
+                              <!--<a href="#" ></a>-->
+                          </li>
+                          <!--<li><span class="my-class">&rarr;</span></li>-->
+                        </ul>
+                    </div>
+                </div>
+               <ng-include src="'partials/blog_sidebar.html'"></ng-include>
+            </div>
+        </section>
+    </div>
+</div>
